@@ -34,8 +34,33 @@ def createPlayers():
     return [A,B]
 
 def placeShips(p):
+    lengths = [2,5,3]
+    valid = []
     selection = getShipInfo()
-    #add ships to p.myFleet
+    for i in range(len(selection)):
+        p = checkPlacement(p,selection[i],lengths[i])
+        
+    return p
+
+def checkPlacement(p,data,l):
+    if data[1] == "H" or data[1] == "h":
+        if data[0][0] + l <= 6:
+            for i in range(l):
+                p.myFleet[data[0][0]+i][data[0][1]]
+        elif data[0][0] - l >= 0:
+            for i in range(l-1,-1,-1):
+                p.myFleet[data[0][0]+i][data[0][1]]
+        else:
+            return False
+    elif data[1] == "V" or data[1] == "v":
+        if data[0][1] + l <=6:
+            for i in range(l):
+                p.myFleet[data[0][0]][data[0][1]+i]
+        elif data[0][1] - l >= 0:
+            for i in range(l-1,-1,-1):
+                p.myFleet[data[0][0]][data[0][1]+i]
+        else:
+            return False
     return p
 
 def getShipInfo():
