@@ -23,14 +23,25 @@ def printIntro():
     print("The game board is 7x7 each.")
     print("The computer will start first after ships have been placed.")
 
+def setup():
+    players = createPlayers()
+    for i in range(2):
+        players[i] = placeShips(players[i])
 
-#def setup():
-#    player = [None,None]
-#    
-#    for i in range(2):
-#         player[i] = createPlayer(i)
-#def createPlayer(pl):
-#    myFleet = [[None*7]*7]
-#    myHits = [[None*7]*7]
-#    myFleet[0],myFleet[1] = placeShips()
-#        
+def createPlayers():
+    A = player()
+    B = player()
+    return [A,B]
+
+def placeShips(p):
+    selection = getShipInfo()
+    #add ships to p.myFleet
+    return p
+
+def getShipInfo():
+    d,dr = input("Where do you want to place your size 2 (D)estroyer? (ie. (1,1)) : "),input("(H)orizontally or (V)ertically?: ")
+    a,ar = input("Where do you want to place your size 5 (A)ircraft Carrier (ie. (1,1)) : "),input("(H)orizontally or (V)ertically?: ")
+    c,cr = input("Where do you want to place your size 3 (C)ruiser? (ie. (1,1)) : "),input("(H)orizontally or (V)ertically?: ")
+    return ((d,dr),(a,ar),(c,cr))
+
+    
